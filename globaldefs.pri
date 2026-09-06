@@ -9,6 +9,8 @@ CONFIG(release, debug|release) {
     DEFINES += NDEBUG
 }
 
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
+
 # Enable ASan for Linux or macOS
 #CONFIG += sanitizer sanitize_address
 
