@@ -1556,9 +1556,9 @@ jobs:
           - --env=VDPAU_DRIVER_PATH=/run/host/usr/lib/x86_64-linux-gnu/vdpau:/run/host/usr/lib/vdpau:/usr/lib/x86_64-linux-gnu/vdpau
         add-extensions:
           # Mount host GL/Vulkan drivers from the Freedesktop runtime
-          org.freedesktop.Platform.GL.default:
+          org.freedesktop.Platform.GL:
             version: '23.08'
-            directory: gl-default
+            directory: lib/GL
             subdirectories: true
             no-autodownload: true
             autodelete: false
@@ -1681,10 +1681,6 @@ jobs:
             build-commands:
               - install -d /app/lib/GL # Workaround for NVIDIA driver issue
               # Create extension mount directories for hardware acceleration
-              - install -d /app/lib/gl-default
-              - install -d /app/lib/gl-nvidia
-              - install -d /app/lib/vaapi-intel
-              - install -d /app/lib/vaapi-amd
               - rm -f .qmake.stash .qmake.cache
               - find . -name "Makefile*" -delete || true
               - rm -rf AntiHooking/ || true
